@@ -1,32 +1,37 @@
  
 
-/* Exercise 1*/
+/* Exercise 1
 
-document.querySelector('#mainHeader')  // => permite buscar uns tag por el nombre del selector 
-document.querySelectorAll('p')          // => seleciona todos os elementos que cumplan una condicion
+alert('Bienvenido!')
+document.querySelector('#new-todo').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const text = e.target.elements.text.value.trim();
+  alert(text);
+})
 
-/* Exercise 2 */
+// preventDefault() => evita que a pagina se atualize 
+//document.querySelector('#mainHeader')  // => permite buscar uns tag por el nombre del selector 
+//document.querySelectorAll('p')          // => seleciona todos los elementos que cumplan una condicion
 
-let button = document.querySelector('button')  //=> => permite buscar uns tag por el nombre del selector 
-button.style.backgroundColor = 'green'
-console.log(button)
 
-/*Exercise 3 */ 
+/* Exercise 2 */ /*Exercise 3 
 
-const button = document.querySelector('.button')
-myButton.addEventListener('click', alertSomething)
+let prueba = document.querySelector('.button')  //=> => permite buscar uns tag por el nombre del selector 
+prueba.style.backgroundColor = 'green'
+prueba.addEventListener('click', (alertSomething))
+ 
 
 function alertSomething () {
   alert('Something')
 }
 
-/*Ejercicio 4 */
+/*Ejercicio 4 
 
 document.querySelector('#new-todo').addEventListener('submit', (alertSomething));
  
-function alertSomething (event) { 
-event.preventDefault();
-const text = event.target.elements.text.value.trim()
+function alertSomething (evento) { 
+evento.preventDefault();
+let text = evento.target.elements.text.value.trim()
 console.log(text);
 }
 
@@ -36,7 +41,7 @@ console.log(text);
 
 let todos = []
 
-const createAll = text => {
+const createTodo = text => {
   todos.push(text)
 }
 
@@ -44,7 +49,7 @@ document.querySelector('#new-todo').addEventListener('submit', e => {
   e.preventDefault()
   const text = e.target.elements.text.value.trim()
   {
-    if (text.length > 0) createAll(text)
+    if (text.length > 0) createTodo(text)
     e.target.elements.text.value = ''
   }
   console.log(todos)
@@ -52,20 +57,13 @@ document.querySelector('#new-todo').addEventListener('submit', e => {
 
 /* Ejercicio 6 */
 
-const generateTodoDOM = todo => {
-  const todoEl = document.createElement('label')
-  const containerEl = document.createElement('div')
-  const todoText = document.createElement('span')
+const paragraph = document.createElement('p');
+const header = document.querySelector('.header');
+header.appendChild(paragraph);
 
-  todoText.textContent = todo
-  tcontainerEl.appendChild(todoText)
+paragraph.textContent = 'Hola soy yo'
+console.log(paragraph);
 
-  todoEl.classList.add('list-item')
-  containerEl.classList.add('list-item__container')
-  todoEl.appendChild(containerEl)
-
-  return todoEl
-}
 
 /* Ejercicio 7 */
 
@@ -104,13 +102,13 @@ const removeTodo = (todoEl) => {
 
 /* Ejercico 10 */ 
 
-const generateTodoDOM = (todo) => {
+//const generateTodoDOM = (todo) => {
     const todoEl = document.createElement('label')
     const containerEl = document.createElement('div')
     const todoText = document.createElement('span')
 
     // Setup the todo text
-    todoText.textContent = todo
+    /*todoText.textContent = todo
     containerEl.appendChild(todoText)
 
     // Setup container
@@ -126,7 +124,10 @@ const generateTodoDOM = (todo) => {
     removeButton.addEventListener('click', () => {
         removeTodo(todoText)
         renderTodos(todos)
+        return todoEl
     })
 
-    return todoEl
-}
+   
+
+
+/* Ejercicio 11 */ 
