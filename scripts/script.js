@@ -49,10 +49,10 @@ document.querySelector('#new-todo').addEventListener('submit', e => {
   e.preventDefault()
   const text = e.target.elements.text.value.trim()
   {
-    if (text.length > 0) createTodo(text)
-    e.target.elements.text.value = ''
+    if (text.length > 0) createTodo(text);
+    e.target.elements.text.value = '';
   }
-  console.log(todos)
+  renderTodos(todos);
 })
 
 /* Ejercicio 6 */
@@ -61,12 +61,45 @@ const paragraph = document.createElement('p');
 const header = document.querySelector('.header');
 header.appendChild(paragraph);
 
-paragraph.textContent = 'Hola soy yo'
+paragraph.textContent = ''
 console.log(paragraph);
 
+const generateTodoDOM  = todo => {
+ let todoEl = document.createElement('label'); /* crear el element */
+ let containerEl = document.createElement('div');
+ let todoText = document.createElement('span');
+ const removeButton = document.createElement('button');
 
-/* Ejercicio 7 */
+  removeButton.textContent = 'remove';
+  todoText.textContent = todo;   /*assignar valores */ 
+  containerEl.appendChild(todoText)
+ 
+  todoEl.classList.add('list-item')
+  containerEl.classList.add('list-item__container')
+  todoEl.appendChild(containerEl)
+  todoEl.appendChild(removeButton)
+ 
+  removeButton.classList.add('button', 'button--text')
+  removeButton.addEventListener('click', () => {
+    removeTodo(todoText)
+    renderTodos(todos)
+  
+})
+  return todoEl
+}
 
+
+/* Ejercicio 7 
+
+const renderTodos = (todos) => {
+  const todoList = document.querySelector('#todos')
+  todoList.innerHTML = '';
+
+  todos.forEach((todo) => {
+    const newTodo = generateTodoDOM(todo);
+          todoList.appendChild(newTodo);
+  })
+};
 
 
 /* Ejercicio 8 */ 
@@ -85,13 +118,14 @@ const renderTodos = (todos) => {
         messageEl.textContent = 'There are no todos to show'
         todoList.appendChild(messageEl)
     }
+    
 }
 renderTodos(todos);
 
 /* Ejercico 9 */ 
 
 
-const removeTodo = (todoEl) => {
+const removeTodo = todoEl => {
     const todoIndex = todos.findIndex((todo) => {
         return todo.toLowerCase() === todoEl.textContent.toLowerCase()
     })
@@ -102,13 +136,13 @@ const removeTodo = (todoEl) => {
 
 /* Ejercico 10 */ 
 
-//const generateTodoDOM = (todo) => {
+const generateTodoDOM = (todo) => {
     const todoEl = document.createElement('label')
     const containerEl = document.createElement('div')
     const todoText = document.createElement('span')
 
     // Setup the todo text
-    /*todoText.textContent = todo
+    todoText.textContent = todo
     containerEl.appendChild(todoText)
 
     // Setup container
@@ -127,7 +161,7 @@ const removeTodo = (todoEl) => {
         return todoEl
     })
 
-   
+  }
 
 
 /* Ejercicio 11 */ 
