@@ -1,3 +1,20 @@
+//Ejercicios 2 y 3:
+//let mySelector = document.querySelector(".button");
+//mySelector.style.backgroundColor = "green";
+//console.log(mySelector);
+
+//---------------------------------------------------------------------------------------
+
+//Contenido del archivo inicial:
+//alert("hello!");
+
+//document.querySelector('#new-todo').addEventListener('submit', (e) => {
+//    e.preventDefault();
+//    const text = e.target.elements.text.value.trim();
+//    alert(text);
+//})
+
+
 //Ejercicio 14:
 const filters = { //Creamos objeto
   searchTitle: "",
@@ -262,21 +279,6 @@ renderTodos(todos);
 
 //---------------------------------------------------------------------------------------
 
-//Ejercicios 2 y 3:
-//let mySelector = document.querySelector(".button");
-//mySelector.style.backgroundColor = "green";
-//console.log(mySelector);
-
-//---------------------------------------------------------------------------------------
-
-//Contenido del archivo inicial:
-//alert("hello!");
-
-//document.querySelector('#new-todo').addEventListener('submit', (e) => {
-//    e.preventDefault();
-//    const text = e.target.elements.text.value.trim();
-//    alert(text);
-//})
 
 //Ejercicio 18:
 function saveTodosToLocalStorage(){ //Creamos una función que nos permite guardarla en la memoria
@@ -294,9 +296,12 @@ function fetchTodosFromLocalStorage(){ //Creamos función
 };
 
 //Ejercicio 21:
-window.addEventListener("storage", e =>{
+window.addEventListener("storage", (e) =>{
   if (e.key === 'todos'){
       fetchTodosFromLocalStorage();
-      renderTodos();
+      renderTodos(todos);
   };
 });
+
+fetchTodosFromLocalStorage()
+renderTodos(todos)
